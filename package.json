@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "node-craigslist": "^2.1.0"
+    "node-craigslist": "^2.1.0",
+    "util": "^0.12.1"
   }
 }
