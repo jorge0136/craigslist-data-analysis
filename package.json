@@ -4,5 +4,8 @@
   "main": "index.js",
   "author": "na",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "node-craigslist": "^2.1.0"
+  }
 }
