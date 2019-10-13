@@ -1,0 +1,8 @@
+{
+  "name": "craigslist-data-analysis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "na",
+  "license": "MIT",
+  "private": true
+}
