@@ -1,6 +1,6 @@
 import { extractAllPrices, filterByProperty } from '../source/listingTransforms';
 
-const mockListings = [
+const stubbedListings = [
   {
     category: 'seattle.craigslist.org',
     date: '2019-10-13 17:01',
@@ -8,7 +8,7 @@ const mockListings = [
     location: '(Puyallup)',
     pid: '6998948646',
     price: '$3995',
-    title: '2002 Dodge Caravan Sport',
+    title: '2002 Scooby Doo Caravan Sport',
     url: 'https://seattle.craigslist.org/tac/cto/d/puyallup-2002-dodge-caravan-sport/6998948646.html'
   },
   {
@@ -23,8 +23,15 @@ const mockListings = [
   }
 ];
 
-test('filters a valid property', () => {
-  expect(filterByProperty(mockListings, 'hasPic' ))
-    .toEqual([ { hasPic: false }, { hasPic: true }]
-    );
+describe('filterByProperty', () => {
+  test('filters a valid property', () => {
+    expect(filterByProperty(stubbedListings, 'hasPic' ))
+      .toEqual([ { hasPic: false }, { hasPic: true }]
+      );
+  });
+
+  test('throws an error with an invalid property', () => {
+    expect(filterByProperty(stubbedListings, 'soul' ))
+      .toThrow();
+  });
 });
