@@ -4,13 +4,12 @@ import extractAllPrices from './listingTransforms';
 
 let cityToSearch = 'seattle';
 let searchTerm = 'van';
+let searchCategory = 'cta';
 
-let client = new craigslist.Client({
-  city: cityToSearch
-});
+let client = new craigslist.Client({ city: cityToSearch });
 
 let options = {
-  category: 'cta',
+  category: searchCategory,
   maxPrice: '90000',
   minPrice: '100'
 };
