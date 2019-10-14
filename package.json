@@ -16,7 +16,7 @@
     "util": "^0.12.1"
   },
   "scripts": {
-    "watch": "nodemon --exec babel-node src/index.js",
+    "go": "yarn babel-node source/index.js",
     "test": "jest"
   }
 }
