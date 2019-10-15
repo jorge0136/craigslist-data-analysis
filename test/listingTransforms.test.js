@@ -24,14 +24,25 @@ const stubbedListings = [
 ];
 
 describe('filterByProperty', () => {
-  test('filters a valid property', () => {
-    expect(filterByProperty(stubbedListings, 'hasPic' ))
-      .toEqual([ { hasPic: false }, { hasPic: true }]
-      );
+  describe('when given a valid propety as a search term', () => {
+    it('it returns only that property', () => {
+      expect(filterByProperty(stubbedListings, 'price' ))
+        .toEqual([ { price: "$3995" }, { price: "$12995" }]
+        );
+    });
   });
 
-  test('throws an error with an invalid property', () => {
-    expect(filterByProperty(stubbedListings, 'soul' ))
-      .toThrow();
+  describe('when given an invalid property as a search term', () => {
+    it('returns empty results', () => {
+      expect(filterByProperty(stubbedListings, 'soul' ))
+        .toEqual([{}, {}]);
+    });
+  });
+  
+  describe('when there are no listings', () => {
+    it('throws an error', () => {
+      expect( () => filterByProperty([], 'hasPic' ))
+        .toThrowError('query fail');
+    });
   });
 });
