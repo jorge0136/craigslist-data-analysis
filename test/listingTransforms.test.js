@@ -45,4 +45,28 @@ describe('filterByProperty', () => {
         .toThrowError('query fail');
     });
   });
+
+  describe('when given no properties as a search term', () => {
+    it('throws an error', () => {
+      expect( () => filterByProperty(stubbedListings))
+        .toThrowError('No properties passed');
+    });
+  });
 });
+
+describe('extractAllPrices', () => {
+  describe('when given a valid propety as a search term', () => {
+    it('it returns only that property', () => {
+      expect(extractAllPrices(stubbedListings))
+        .toEqual([ 3995, 12995 ]);
+    });
+  });
+  
+  describe('when there are no listings', () => {
+    it('throws an error', () => {
+      expect( () => extractAllPrices([]))
+        .toThrowError('query fail');
+    });
+  });
+});
+

@@ -21,18 +21,11 @@ export const extractAllPrices = (listings) => {
   return allPrices;
 };
 
-// // Is the listing property, passed as a search term, contained within the 
-// // listings ojbect returned from query?
-// let isListingsPropertyValid = (listings, listingsProperty) => {
-//   listings.forEach((listing) => { listingsProperty in listing });
-// }
-
 // Search terms are the `properties` of a `listing` as a string.
 // Example for a auto/car search: 'price' or 'title'. 
 export const filterByProperty = (listings, ...properties) => {
   validateListings(listings);
   if (_.isNil(...properties)) { throw new Error("No properties passed to the filter."); }
-  // console.log(isListingsPropertyValid(listings, properties));
   let filteredListings = [];
 
   listings.forEach((listing) => {
