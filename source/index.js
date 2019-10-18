@@ -1,28 +1,29 @@
 import craigslist from 'node-craigslist';
-let util = require('util');
 import _ from 'lodash';
-import { extractAllPrices, filterByProperty } from './listingTransforms';
+import { extractAllPrices, average } from './listingTransforms';
 
 let cityToSearch = 'seattle';
 let searchTerm = 'van';
-let searchCategory = 'cta';
+let searchCategory = 'cta'; // https://github.com/brozeph/node-craigslist#categories
 
-let client = new craigslist.Client({ city: cityToSearch });
+let client = new craigslist.Client({ city: cityToSearch, nocache: true });
 
 let options = {
   category: searchCategory,
-  maxPrice: '90000',
-  minPrice: '100',
-  searchNearby: false
+  // maxPrice: '16000',
+  // minPrice: '14999',
+  searchNearby: 1
 };
 
 client
   .search(options, searchTerm)
   .then((listings) => {
-    // console.log(listings);
-    // console.log(`There are ${listings.length} listings for the search: ${searchTerm}`);
-    // console.log(extractAllPrices(listings));
-    console.log(filterByProperty(listings, 'hasPic'));
+    console.log(`In ${ cityToSearch }`)
+    console.log(`There are ${ listings.length } listings`);
+    console.log(`For the search: ${ searchTerm }`);
+    console.log(extractAllPrices(listings));
+    console.log(`Average price is: $${ average(extractAllPrices(listings)) }`);
+    return listings;
   })
   
   .catch((err) => {

@@ -42,7 +42,7 @@ describe('filterByProperty', () => {
   describe('when there are no listings', () => {
     it('throws an error', () => {
       expect( () => filterByProperty([], 'hasPic' ))
-        .toThrowError('query fail');
+        .toThrowError('No Craigslist listings were found');
     });
   });
 
@@ -65,7 +65,7 @@ describe('extractAllPrices', () => {
   describe('when there are no listings', () => {
     it('throws an error', () => {
       expect( () => extractAllPrices([]))
-        .toThrowError('query fail');
+        .toThrowError('No Craigslist listings were found');
     });
   });
 });
