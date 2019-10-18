@@ -1,9 +1,12 @@
 import craigslist from 'node-craigslist';
 import _ from 'lodash';
+import chalk from 'chalk';
+
+
 import { extractAllPrices, average } from './listingTransforms';
 
-let cityToSearch = 'seattle';
-let searchTerm = 'van';
+let cityToSearch = 'Seattle';
+let searchTerm = 'Van';
 let searchCategory = 'cta'; // https://github.com/brozeph/node-craigslist#categories
 
 let client = new craigslist.Client({ city: cityToSearch, nocache: true });
@@ -18,11 +21,12 @@ let options = {
 client
   .search(options, searchTerm)
   .then((listings) => {
-    console.log(`In ${ cityToSearch }`)
-    console.log(`There are ${ listings.length } listings`);
-    console.log(`For the search: ${ searchTerm }`);
+    console.log(`In ${ chalk.green(cityToSearch) }`);
+    console.log(`There are ${ chalk.green(listings.length) } listings`);
+    console.log(`For the search: ${ chalk.green(searchTerm) }`);
     console.log(extractAllPrices(listings));
-    console.log(`Average price is: $${ average(extractAllPrices(listings)) }`);
+    console.log(`Average price
+    ${ chalk.green('$')}${ chalk.green(average(extractAllPrices(listings))) }`);
     return listings;
   })
   
