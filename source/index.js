@@ -1,7 +1,5 @@
 import craigslist from 'node-craigslist';
-import _ from 'lodash';
 import chalk from 'chalk';
-
 
 import { extractAllPrices, average } from './listingTransforms';
 
@@ -21,15 +19,16 @@ let options = {
 client
   .search(options, searchTerm)
   .then((listings) => {
+
     console.log(`In ${ chalk.green(cityToSearch) }`);
     console.log(`There are ${ chalk.green(listings.length) } listings`);
     console.log(`For the search: ${ chalk.green(searchTerm) }`);
-    console.log(extractAllPrices(listings));
-    console.log(`Average price
-    ${ chalk.green('$')}${ chalk.green(average(extractAllPrices(listings))) }`);
+    // console.log(extractAllPrices(listings));
+    console.log(`Average price ${ chalk.green('$')}${ chalk.green(average(extractAllPrices(listings))) }`);
     return listings;
+
   })
-  
+
   .catch((err) => {
     console.error(err);
   });
