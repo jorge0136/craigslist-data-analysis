@@ -28,8 +28,9 @@ client
     console.log(`Average price
     ${ chalk.green('$')}${ chalk.green(average(extractAllPrices(listings))) }`);
     return listings;
+
   })
-  
+
   .catch((err) => {
     console.error(err);
   });
